@@ -27,7 +27,7 @@ if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Adm
 }
 
 Write-Host "======================================================================" -ForegroundColor Cyan
-Write-Host "          SKRIP AUDIT & REMEDIASI KEAMANAN WINDOWS 10/11              " -ForegroundColor Cyan
+Write-Host "           SKRIP AUDIT & REMEDIASI KEAMANAN WINDOWS 10/11             " -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
 if ($Fix) {
     Write-Host "[!] Mode: AUDIT & REMEDIASI OTOMATIS DIAKTIFKAN" -ForegroundColor Yellow
@@ -68,7 +68,7 @@ function Log-Result {
 # ----------------------------------------------------------------------
 # 1. ACCOUNT POLICIES & LOCKOUT (KONTROL 1.1 & 1.2)
 # ----------------------------------------------------------------------
-Write-Host "[+] Checking Section 1: Account Policies..." -ForegroundColor Header
+Write-Host "[+] Checking Section 1: Account Policies..." -ForegroundColor Yellow
 
 if ($Fix) {
     net accounts /minpwlen:14 /maxpwage:365 /minpwage:1 /uniquepw:24 | Out-Null
@@ -99,7 +99,7 @@ if ($reversible -eq 0) { Log-Result "1.1.2" "Reversible Encryption Disabled" "CO
 # ----------------------------------------------------------------------
 # 2. LOCAL POLICIES & AUDIT POLICY (KONTROL 2.1 & 2.2)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 2: Local Accounts & Audit Configuration..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 2: Local Accounts & Audit Configuration..." -ForegroundColor Yellow
 
 $guest = Get-LocalUser -Name "Guest" -ErrorAction SilentlyContinue
 $adminLocal = Get-LocalUser -Name "Administrator" -ErrorAction SilentlyContinue
@@ -132,7 +132,7 @@ if ($sceVal -eq 1) { Log-Result "2.2" "Force Advanced Audit Policy Enforcement" 
 # ----------------------------------------------------------------------
 # 3. SECURITY OPTIONS (KONTROL 3.1 - 3.4)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 3: Security Options & Auth Settings..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 3: Security Options & Auth Settings..." -ForegroundColor Yellow
 
 $sysPolicies = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
 $msvPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0"
@@ -158,7 +158,7 @@ if ($ntlmMin -eq 537395200) { Log-Result "3.4" "NTLM Min Client Security (NTLMv2
 # ----------------------------------------------------------------------
 # 4. WINDOWS FIREWALL WITH ADVANCED SECURITY (KONTROL 4.1)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 4: Windows Firewall Configurations..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 4: Windows Firewall Configurations..." -ForegroundColor Yellow
 
 if ($Fix) {
     Set-NetFirewallProfile -Name Domain,Private,Public -Enabled True -DefaultInboundAction Block -LogBlocked True -LogMaxSizeKilobytes 16384 | Out-Null
@@ -177,7 +177,7 @@ foreach ($p in ("Domain", "Private", "Public")) {
 # ----------------------------------------------------------------------
 # 5. EVENT LOG CONFIGURATION (KONTROL 5.1 - 5.3)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 5: Event Log Configurations..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 5: Event Log Configurations..." -ForegroundColor Yellow
 
 $logs = @(
     @{ Name = "Application"; MinSize = 33554432 },
@@ -202,7 +202,7 @@ foreach ($l in $logs) {
 # ----------------------------------------------------------------------
 # 6. CREDENTIAL PROTECTION & BITLOCKER (KONTROL 6.1 & 6.2)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 6: LSASS & BitLocker Encryption..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 6: LSASS & BitLocker Encryption..." -ForegroundColor Yellow
 
 $wdigestPath = "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest"
 if ($Fix) {
@@ -227,7 +227,7 @@ if ($bitlocker.ProtectionStatus -eq "On") {
 # ----------------------------------------------------------------------
 # 7. SYSTEM SERVICES (KONTROL 7.1 & 7.2)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 7: System Services Hardening..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 7: System Services Hardening..." -ForegroundColor Yellow
 
 # 7.1 Disabled Services
 $unsecureServices = @("RemoteRegistry", "RemoteAccess", "SSDPSRV", "upnphost", "XblAuthManager", "WMPNetworkSvc", "Spooler")
@@ -262,7 +262,7 @@ foreach ($rSvc in $requiredServices) {
 # ----------------------------------------------------------------------
 # 8. USER ACCOUNT CONTROL / UAC (KONTROL 8.1 - 8.4)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 8: User Account Control (UAC)..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 8: User Account Control (UAC)..." -ForegroundColor Yellow
 
 if ($Fix) {
     Set-RegValue -Path $sysPolicies -Name "EnableLUA" -Value 1
@@ -284,7 +284,7 @@ if ($secureDesktop -eq 1) { Log-Result "8.4" "UAC Secure Desktop Enabled" "COMPL
 # ----------------------------------------------------------------------
 # 9. PENGATURAN REGISTRY TAMBAHAN / MSS (KONTROL 9.1 - 9.6)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 9: MSS & Network Hardening Registry..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 9: MSS & Network Hardening Registry..." -ForegroundColor Yellow
 
 $winlogonPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 $tcpipPath    = "HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters"
@@ -315,7 +315,7 @@ if ($safeDll -eq 1) { Log-Result "9.4" "Safe DLL Search Mode Enabled" "COMPLIANT
 # ----------------------------------------------------------------------
 # 10. REMOTE DESKTOP & POWERSHELL LOGGING (KONTROL 10.1 & 10.2)
 # ----------------------------------------------------------------------
-Write-Host "`n[+] Checking Section 10: RDP Security & PowerShell Logging..." -ForegroundColor Header
+Write-Host "`n[+] Checking Section 10: RDP Security & PowerShell Logging..." -ForegroundColor Yellow
 
 $rdpWinPath = "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp"
 $rdpTsPath  = "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server"
