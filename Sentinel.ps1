@@ -7,10 +7,10 @@
 .PARAMETER Fix
     Jika switch ini dipanggil, skrip akan langsung memperbaiki seluruh temuan NON-COMPLIANT.
 .EXAMPLE
-    .\Audit-WindowsSecurity-Full.ps1
+    .\Sentinel.ps1
     (Mode Audit Only)
 .EXAMPLE
-    .\Audit-WindowsSecurity-Full.ps1 -Fix
+    .\Sentinel.ps1 -Fix
     (Mode Audit & Remediasi Otomatis)
 #>
 
