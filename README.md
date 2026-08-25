@@ -1,8 +1,15 @@
-# Sentinel  <br>Audit & Remediasi Keamanan Otomatis Windows 10/11 
+<div align="center">
 
-[![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6.svg)](https://microsoft.com) 
-[![PowerShell](https://img.shields.io/badge/PowerShell-v5.1%2B-blue.svg)](https://docs.microsoft.com/powershell/) 
-<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT"></a>  
+# Sentinel
+### Audit & Remediasi Keamanan Otomatis Windows 10/11
+
+</div>
+
+<p align="center">
+  <a href="https://microsoft.com"><img src="https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6.svg" alt="Platform"></a>
+  <a href="https://docs.microsoft.com/powershell/"><img src="https://img.shields.io/badge/PowerShell-v5.1%2B-blue.svg" alt="PowerShell"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-orange.svg" alt="License: MIT"></a>
+</p>
 
 ---
 
