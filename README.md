@@ -1,7 +1,7 @@
 <div align="center">
 
 # Sentinel
-### Audit & Remediasi Keamanan Otomatis Windows 10/11
+### [Audit & Remediasi Keamanan Otomatis Windows 10/11]
 
 </div>
 
