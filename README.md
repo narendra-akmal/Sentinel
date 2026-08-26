@@ -155,5 +155,5 @@ Setelah proses eksekusi selesai, Sentinel menampilkan laporan terstruktur pada k
 * **Kesesuaian Manajemen Perubahan:** Eksekusi parameter -Fix mengubah konfigurasi administratif, status layanan sistem, dan kunci registri. Disarankan untuk melakukan pengujian pada lingkungan *staging* sebelum mendistribusikan skrip secara luas melalui *Group Policy Objects* (GPO) atau Microsoft Intune.  
 * **Enkripsi BitLocker (Kontrol 6.2):** Status enkripsi BitLocker dievaluasi secara otomatis; namun proses aktivasi memerlukan inisialisasi TPM hardware serta kebijakan kunci pemulihan (*recovery key*) yang dikonfigurasi secara terpisah.
 
-##📄 Lisensi
+##  📄 Lisensi
 <p>Proyek ini didistribusikan di bawah lisensi <strong>MIT License</strong>. Anda bebas menggunakan, memodifikasi, mendistribusikan, dan memanfaatkannya secara komersial maupun pribadi tanpa batasan. Lihat berkas <a href="LICENSE">LICENSE</a> untuk informasi lebih lanjut.</p>
