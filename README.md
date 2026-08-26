@@ -109,8 +109,7 @@ Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/nar
 Untuk mengambil dan menjalankan perbaikan sistem secara langsung:
 
 ```PowerShell  
-$script = (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1" -UseBasicParsing).Content  
-Invoke-Command -ScriptBlock ([scriptblock]::Create($script)) -ArgumentList $true
+$script = (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1" -UseBasicParsing).Content ; Invoke-Command -ScriptBlock ([scriptblock]::Create($script)) -ArgumentList $true  
 
 ```  
 ### **B. Eksekusi dari Repositori Lokal**
