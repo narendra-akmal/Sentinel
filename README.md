@@ -103,14 +103,14 @@ Eksekusi skrip secara langsung dari repositori GitHub melalui terminal PowerShel
 #### **1. Mode Audit Telemetri**
 
 ```PowerShell  
-Invoke-Expression (Invoke-WebRequest -Uri "[https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1?token=GHSAT0AAAAAAEFZKLGVBFLTK2BB34CZYIFS2UNVK4A](https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1?token=GHSAT0AAAAAAEFZKLGVBFLTK2BB34CZYIFS2UNVK4A)" -UseBasicParsing).Content
+Invoke-Expression (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1" -UseBasicParsing).Content  
 ```  
 #### **2. Mode Remediation Otomatis**
 
 Untuk mengambil dan menjalankan perbaikan sistem secara langsung:
 
 ```PowerShell  
-$script = (Invoke-WebRequest -Uri "[https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1?token=GHSAT0AAAAAAEFZKLGVBFLTK2BB34CZYIFS2UNVK4A](https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1?token=GHSAT0AAAAAAEFZKLGVBFLTK2BB34CZYIFS2UNVK4A)" -UseBasicParsing).Content  
+$script = (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/narendra-akmal/Sentinel/refs/heads/main/Sentinel.ps1" -UseBasicParsing).Content  
 Invoke-Command -ScriptBlock ([scriptblock]::Create($script)) -ArgumentList "-Fix"
 ```  
 ### **B. Eksekusi dari Repositori Lokal**
