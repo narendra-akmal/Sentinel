@@ -33,7 +33,6 @@ Pemeliharaan postur keamanan sistem secara konsisten di seluruh simpul *endpoint
 | *Lingkungan Eksekusi* | Windows PowerShell 5.1+ / PowerShell Core 7.x |  
 | *Persyaratan Hak Akses* | `Elevated Administrator` (`Security.Principal.WindowsBuiltInRole::Administrator`) |  
 | *Apresiasi Standar Utama* | CIS Microsoft Windows 10/11 Benchmark v2.0.0+ |  
-| *Pemetaan Kepatuhan* | Kontrol A.8.8, A.8.9, A.8.12, A.8.20, A.8.24 |
 
 ---
 
