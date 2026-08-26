@@ -40,7 +40,7 @@ Pemeliharaan postur keamanan sistem secara konsisten di seluruh simpul *endpoint
 
 Logika evaluasi pada Sentinel memeriksa 24 parameter yang terbagi ke dalam 10 domain keamanan spesifik. Tabel I menampilkan pemetaan komprehensif dari kontrol internal skrip.
 
-## Tabel I. Matriks Referensi Silang Domain Kontrol Keamanan dan Standar Internasional
+## Tabel I. Matriks Referensi Silang Domain Kontrol Keamanan   
 
 | ID Seksi | Spesifikasi Domain | Referensi CIS Benchmark | Mekanisme Eksekusi / Kunci Registri Target |  
 | :---: | :--- | :---: | :--- |  
