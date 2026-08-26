@@ -1,6 +1,6 @@
 <div align="center">
 
-# Sentinel
+# :shield:Sentinel
 ### [Audit & Remediasi Keamanan Otomatis Windows 10/11]
 
 </div>
