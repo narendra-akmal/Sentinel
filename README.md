@@ -43,34 +43,34 @@ Logika evaluasi pada Sentinel memeriksa 24 parameter yang terbagi ke dalam 10 do
 
 ## Tabel I. Matriks Referensi Silang Domain Kontrol Keamanan dan Standar Internasional
 
-| ID Seksi | Spesifikasi Domain | Referensi CIS Benchmark | Pemetaan | Mekanisme Eksekusi / Kunci Registri Target |  
-| :---: | :--- | :---: | :---: | :--- |  
-| *1.1* | Panjang Minimum Kata Sandi | Kontrol 1.1.1 | A.8.5 | Net Accounts (`/minpwlen:14`) |  
-| *1.2* | Ambang Pemblokiran Akun | Kontrol 1.2.1 | A.8.5 | Net Accounts (`/lockoutthreshold:5`, `/lockoutduration:15`) |  
-| *1.1.1* | Kompleksitas Kata Sandi | Kontrol 1.1.2 | A.8.5 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `ComplexityEnabled=1` |  
-| *1.1.2* | Enkripsi Dapat Dibalik | Kontrol 1.1.3 | A.8.5 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `ReversibleEncryptionEnabled=0` |  
-| *2.1.1* | Akun Guest Bawaan | Kontrol 2.1.1 | A.8.2 | `Disable-LocalUser -Name "Guest"` |  
-| *2.1.2* | Akun Administrator Bawaan | Kontrol 2.1.2 | A.8.2 | `Disable-LocalUser -Name "Administrator"` |  
-| *2.2* | Penegakan Kebijakan Audit Lanjutan | Kontrol 2.2.1 | A.8.15 | `SCENoApplyLegacyAuditPolicy=1` & Eksekusi Subkategori Auditpol |  
-| *3.1* | Tingkat Autentikasi LAN Manager | Kontrol 2.3.11.7 | A.8.20 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `LmCompatibilityLevel=5` |  
-| *3.2* | Pembatasan Akses Anonim SAM | Kontrol 2.3.11.4 | A.8.2 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `RestrictAnonymousSAM=1` |  
-| *3.3* | Batas Waktu Inaktivitas Sesi | Kontrol 2.3.11.1 | A.8.7 | `HKLM:SOFTWARE...PoliciesSystem` -> `InactivityTimeoutSecs=900` |  
-| *3.4* | Keamanan Klien Minimum NTLM | Kontrol 2.3.11.9 | A.8.20 | `HKLM:SYSTEM...LsaMSV1_0` -> `NTLMMinClientSec=537395200` |  
-| *4.1* | Configuration Windows Defender Firewall | Kontrol 9.1 - 9.3 | A.8.20 | Profil Domain, Private, Public diset `Block Inbound`, `LogBlocked=True` |  
-| *5.0* | Kapasitas Ukuran Event Log | Kontrol 18.2 | A.8.15 | Ekspansi `wevtutil` (App/Sys >= 32MB, Security >= 192MB) |  
-| *6.1.1* | Penonaktifan Autentikasi WDigest | Kontrol 18.8.23.1 | A.8.5 | `...ControlSecurityProvidersWDigest` -> `UseLogonCredential=0` |  
-| *6.1.2* | Proteksi LSASS RunAsPPL | Kontrol 18.8.23.2 | A.8.5 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `RunAsPPL=1` |  
-| *6.2* | Verifikasi Enkripsi BitLocker | Kontrol 18.1.1 | A.8.24 | Kueri `Get-BitLockerVolume -MountPoint "C:"` |  
-| *7.1* | Penonaktifan Layanan Berisiko | Kontrol 5.1 - 5.7 | A.8.9 | Mematikan `RemoteRegistry`, `Spooler`, `SSDPSRV`, `upnphost`, dll. |  
-| *7.2* | Penegakan Layanan Utama | Kontrol 5.8 - 5.11 | A.8.8 | Memastikan status `WinDefend`, `MpsSvc`, `EventLog`, `CryptSvc` berjalan |  
-| *8.1* | Mode Persetujuan Admin UAC | Kontrol 2.3.17.1 | A.8.2 | `...PoliciesSystem` -> `EnableLUA=1` |  
-| *8.2* | Perilaku Elevasi Akses UAC | Kontrol 2.3.17.3 | A.8.2 | `...PoliciesSystem` -> `ConsentPromptBehaviorAdmin=2` |  
-| *8.3* | Penolakan Otomatis Pengguna UAC | Kontrol 2.3.17.4 | A.8.2 | `...PoliciesSystem` -> `ConsentPromptBehaviorUser=0` |  
-| *8.4* | Mode Desktop Aman UAC | Kontrol 2.3.17.5 | A.8.2 | `...PoliciesSystem` -> `PromptOnSecureDesktop=1` |  
-| *9.1* | Perlindungan AutoAdminLogon | Kontrol 18.9.3 | A.8.2 | `...Winlogon` -> `AutoAdminLogon="0"` |  
-| *9.2-4*| Pengerasan Protokol Jaringan | Kontrol 18.9.8 | A.8.20 | Mematikan IP Source Routing, ICMP Redirects; Mengaktifkan Safe DLL Search |  
-| *10.1* | Pengerasan Keamanan RDP | Kontrol 18.9.50 | A.8.20 | Wajib NLA (`UserAuthentication=1`), Enkripsi Tingkat 3, Matikan Redireksi Drive |  
-| *10.2* | Pencatatan Log PowerShell Script | Kontrol 18.9.84 | A.8.15 | `...PowerShellScriptBlockLogging` -> `EnableScriptBlockLogging=1` |
+| ID Seksi | Spesifikasi Domain | Referensi CIS Benchmark | Mekanisme Eksekusi / Kunci Registri Target |  
+| :---: | :--- | :---: | :--- |  
+| *1.1* | Panjang Minimum Kata Sandi | Kontrol 1.1.1 | Net Accounts (`/minpwlen:14`) |  
+| *1.2* | Ambang Pemblokiran Akun | Kontrol 1.2.1 | Net Accounts (`/lockoutthreshold:5`, `/lockoutduration:15`) |  
+| *1.1.1* | Kompleksitas Kata Sandi | Kontrol 1.1.2 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `ComplexityEnabled=1` |  
+| *1.1.2* | Enkripsi Dapat Dibalik | Kontrol 1.1.3 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `ReversibleEncryptionEnabled=0` |  
+| *2.1.1* | Akun Guest Bawaan | Kontrol 2.1.1 | `Disable-LocalUser -Name "Guest"` |  
+| *2.1.2* | Akun Administrator Bawaan | Kontrol 2.1.2 | `Disable-LocalUser -Name "Administrator"` |  
+| *2.2* | Penegakan Kebijakan Audit Lanjutan | Kontrol 2.2.1 | `SCENoApplyLegacyAuditPolicy=1` & Eksekusi Subkategori Auditpol |  
+| *3.1* | Tingkat Autentikasi LAN Manager | Kontrol 2.3.11.7 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `LmCompatibilityLevel=5` |  
+| *3.2* | Pembatasan Akses Anonim SAM | Kontrol 2.3.11.4 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `RestrictAnonymousSAM=1` |  
+| *3.3* | Batas Waktu Inaktivitas Sesi | Kontrol 2.3.11.1 | `HKLM:SOFTWARE...PoliciesSystem` -> `InactivityTimeoutSecs=900` |  
+| *3.4* | Keamanan Klien Minimum NTLM | Kontrol 2.3.11.9 | `HKLM:SYSTEM...LsaMSV1_0` -> `NTLMMinClientSec=537395200` |  
+| *4.1* | Configuration Windows Defender Firewall | Kontrol 9.1 - 9.3 | Profil Domain, Private, Public diset `Block Inbound`, `LogBlocked=True` |  
+| *5.0* | Kapasitas Ukuran Event Log | Kontrol 18.2 | Ekspansi `wevtutil` (App/Sys >= 32MB, Security >= 192MB) |  
+| *6.1.1* | Penonaktifan Autentikasi WDigest | Kontrol 18.8.23.1 | `...ControlSecurityProvidersWDigest` -> `UseLogonCredential=0` |  
+| *6.1.2* | Proteksi LSASS RunAsPPL | Kontrol 18.8.23.2 | `HKLM:SYSTEMCurrentControlSetControlLsa` -> `RunAsPPL=1` |  
+| *6.2* | Verifikasi Enkripsi BitLocker | Kontrol 18.1.1 | Kueri `Get-BitLockerVolume -MountPoint "C:"` |  
+| *7.1* | Penonaktifan Layanan Berisiko | Kontrol 5.1 - 5.7 | Mematikan `RemoteRegistry`, `Spooler`, `SSDPSRV`, `upnphost`, dll. |  
+| *7.2* | Penegakan Layanan Utama | Kontrol 5.8 - 5.11 | Memastikan status `WinDefend`, `MpsSvc`, `EventLog`, `CryptSvc` berjalan |  
+| *8.1* | Mode Persetujuan Admin UAC | Kontrol 2.3.17.1 | `...PoliciesSystem` -> `EnableLUA=1` |  
+| *8.2* | Perilaku Elevasi Akses UAC | Kontrol 2.3.17.3 | `...PoliciesSystem` -> `ConsentPromptBehaviorAdmin=2` |  
+| *8.3* | Penolakan Otomatis Pengguna UAC | Kontrol 2.3.17.4 | `...PoliciesSystem` -> `ConsentPromptBehaviorUser=0` |  
+| *8.4* | Mode Desktop Aman UAC | Kontrol 2.3.17.5 | `...PoliciesSystem` -> `PromptOnSecureDesktop=1` |  
+| *9.1* | Perlindungan AutoAdminLogon | Kontrol 18.9.3 | `...Winlogon` -> `AutoAdminLogon="0"` |  
+| *9.2-4*| Pengerasan Protokol Jaringan | Kontrol 18.9.8 | Mematikan IP Source Routing, ICMP Redirects; Mengaktifkan Safe DLL Search |  
+| *10.1* | Pengerasan Keamanan RDP | Kontrol 18.9.50 | Wajib NLA (`UserAuthentication=1`), Enkripsi Tingkat 3, Matikan Redireksi Drive |  
+| *10.2* | Pencatatan Log PowerShell Script | Kontrol 18.9.84 | `...PowerShellScriptBlockLogging` -> `EnableScriptBlockLogging=1` |
 
 ---
 
