@@ -16,7 +16,7 @@
 
 [CmdletBinding()]
 param (
-    [switch]$Fix = $true
+    [switch]$Fix 
 )
 # Mengatur lokasi penyimpanan ke folder Desktop dengan nama file bertanggal
 $DesktopPath = "$HOME\Desktop\Transcript_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
