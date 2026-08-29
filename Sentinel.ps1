@@ -16,8 +16,13 @@
 
 [CmdletBinding()]
 param (
-    [switch]$Fix
+    [switch]$Fix = $true
 )
+# Mengatur lokasi penyimpanan ke folder Desktop dengan nama file bertanggal
+$DesktopPath = "$HOME\Desktop\Transcript_$(Get-Date -Format 'yyyyMMdd_HHmmss').txt"
+
+# Memulai perekaman
+Start-Transcript -Path $DesktopPath
 
 # Memastikan eksekusi berjalan sebagai Administrator
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
@@ -341,3 +346,5 @@ if ($psLog -eq 1) { Log-Result "10.2" "PowerShell Script Block Logging Enabled" 
 Write-Host "`n======================================================================" -ForegroundColor Cyan
 Write-Host "                     AUDIT SELESAI DILAKUKAN                          " -ForegroundColor Cyan
 Write-Host "======================================================================" -ForegroundColor Cyan
+Stop-Transcript
+Read-Host "Tekan Enter Untuk Keluar..."
